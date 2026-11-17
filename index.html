@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101827"><title>Manas College | Share Your Experience</title>
+<style>
+:root{--bg:#0b1220;--panel:#121e31;--line:#293b56;--text:#edf4ff;--muted:#a8b8ce;--gold:#f4b942;--teal:#67d5c3}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 10% 0%,#1b3554 0,transparent 34%),radial-gradient(circle at 100% 10%,#24334c 0,transparent 30%),var(--bg);font-family:Inter,system-ui,Segoe UI,Arial,sans-serif;color:var(--text);min-height:100vh}
+button,input,textarea{font:inherit}button{cursor:pointer}.wrap{width:min(1050px,92%);margin:auto;padding:25px 0 45px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:28px}.brand{display:flex;align-items:center;gap:12px}.logo{width:50px;height:50px;border-radius:15px;background:linear-gradient(135deg,var(--gold),#ffe3a0);display:grid;place-items:center;color:#152033;font-weight:900;font-size:19px}.brand h1{font-size:18px;margin:0}.brand p{margin:3px 0 0;color:var(--muted);font-size:11px;letter-spacing:.13em;text-transform:uppercase}
+.lang{display:flex;gap:7px}.lang button,.ghost{border:1px solid var(--line);background:#142238;color:var(--text);padding:9px 12px;border-radius:10px}.lang .active{background:var(--gold);color:#172033;font-weight:800}
+.hero{text-align:center;max-width:720px;margin:0 auto 25px}.eyebrow{color:var(--gold);font-weight:800;font-size:12px;letter-spacing:.18em;text-transform:uppercase}.hero h2{font-size:clamp(29px,5vw,46px);line-height:1.1;margin:10px 0}.hero p{color:var(--muted);line-height:1.6}
+.layout{display:grid;grid-template-columns:1fr .9fr;gap:18px;align-items:start}.card{background:linear-gradient(155deg,#17263b,#101b2d);border:1px solid var(--line);border-radius:21px;padding:22px;box-shadow:0 22px 60px #0006}.card h3{margin:0 0 8px;font-size:18px}.sub,.note{color:var(--muted);font-size:13px;line-height:1.55}.sub{margin:0 0 16px}
+label{display:block;font-size:13px;font-weight:700;margin:14px 0 7px;color:#dce8f8}input,textarea{width:100%;background:#0c1728;border:1px solid #30445f;border-radius:12px;padding:13px;color:var(--text);outline:none}input:focus,textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px #f4b9421c}textarea{min-height:160px;resize:vertical;line-height:1.6}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.chip{border:1px solid #405570;background:#172a42;color:#dce8f8;border-radius:99px;padding:7px 11px;font-size:12px}.chip:hover{border-color:var(--gold);color:var(--gold)}
+.stars{display:flex;gap:5px;margin:9px 0}.star{font-size:26px;color:#536780;cursor:pointer}.star.on{color:var(--gold)}
+.btn{border:0;border-radius:12px;padding:13px 16px;font-weight:800;background:linear-gradient(135deg,var(--gold),#ffda83);color:#182238}.btn.secondary{background:#1d3853;color:#eaf4ff;border:1px solid #3b5878}.btn.outline{background:transparent;color:var(--text);border:1px solid var(--line)}.actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:15px}.actions .btn{flex:1;min-width:135px;text-align:center;text-decoration:none}
+.preview{min-height:260px}.empty{display:grid;place-items:center;text-align:center;min-height:220px;color:var(--muted);padding:20px}.emoji{font-size:38px;margin-bottom:12px}.review-box{background:#0b1728;border:1px solid #314661;border-radius:15px;padding:15px;white-space:pre-wrap;line-height:1.65}
+.status{font-size:12px;color:var(--teal);min-height:18px;margin-top:9px}.note{margin-top:14px}.footer{text-align:center;color:#8093ad;font-size:12px;margin-top:24px}.admin-link{background:none;border:0;color:#8093ad;text-decoration:underline;font-size:12px;margin-top:8px}.hidden{display:none!important}
+.admin{margin-top:18px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.stat{background:#0c1728;border:1px solid var(--line);border-radius:13px;padding:13px}.stat strong{font-size:23px;display:block;color:var(--gold)}.stat span,.small{font-size:11px;color:var(--muted)}.qrrow{display:grid;grid-template-columns:1fr 150px;gap:14px;align-items:center}.qr{width:150px;height:150px;background:white;padding:7px;border-radius:10px;object-fit:contain}
+@media(max-width:760px){.layout{grid-template-columns:1fr}.top{align-items:flex-start}.card{padding:18px}.qrrow{grid-template-columns:1fr}.qr{width:140px;height:140px}.stats{grid-template-columns:1fr 1fr}}
+</style></head>
+<body><div class="wrap">
+<header class="top"><div class="brand"><div class="logo">MC</div><div><h1>Manas College</h1><p>Share your experience</p></div></div><div class="lang"><button id="enBtn" class="active" onclick="setLang('en')">English</button><button id="hiBtn" onclick="setLang('hi')">हिन्दी</button></div></header>
+<section class="hero"><div class="eyebrow" id="eyebrow">YOUR FEEDBACK MATTERS</div><h2 id="headline">Help others discover Manas College</h2><p id="intro">Share what you genuinely liked about your experience. Choose a few keywords and create an editable review draft.</p></section>
+<main class="layout">
+<section class="card"><h3 id="stepTitle">1. Describe your experience</h3><p class="sub" id="stepSub">Select keywords or type your own. Please share only what reflects your real experience.</p>
+<label id="ratingLabel">Your rating</label><div class="stars"><span class="star on" data-v="1" onclick="setRating(1)">★</span><span class="star on" data-v="2" onclick="setRating(2)">★</span><span class="star on" data-v="3" onclick="setRating(3)">★</span><span class="star on" data-v="4" onclick="setRating(4)">★</span><span class="star on" data-v="5" onclick="setRating(5)">★</span></div>
+<label id="keywordLabel" for="keywords">Keywords</label><input id="keywords" placeholder="e.g. supportive teachers, library, campus"><div class="chips">
+<button class="chip" onclick="addWord('Supportive teachers')">Supportive teachers</button><button class="chip" onclick="addWord('Friendly environment')">Friendly environment</button><button class="chip" onclick="addWord('Good facilities')">Good facilities</button><button class="chip" onclick="addWord('Helpful staff')">Helpful staff</button><button class="chip" onclick="addWord('Quality education')">Quality education</button><button class="chip" onclick="addWord('Library')">Library</button><button class="chip" onclick="addWord('Campus')">Campus</button></div>
+<label id="extraLabel" for="extra">Anything else? (optional)</label><input id="extra" placeholder="Add a personal detail"><div class="actions"><button class="btn" id="generateBtn" onclick="generateReview()">Generate my review</button><button class="btn secondary" id="clearBtn" onclick="clearForm()">Clear</button></div>
+<p class="note" id="honesty">Only post a review that reflects your own genuine experience. You can edit the draft before opening Google.</p></section>
+<section class="card preview"><h3 id="previewTitle">2. Review preview</h3><p class="sub" id="previewSub">Edit your review freely before continuing.</p>
+<div id="empty" class="empty"><div><div class="emoji">✍️</div><strong id="emptyTitle">Your review will appear here</strong><div class="small" id="emptyText">Start by adding a few keywords.</div></div></div>
+<div id="editorWrap" class="hidden"><textarea id="reviewText" aria-label="Edit your review"></textarea><div class="actions"><button class="btn secondary" onclick="copyReview()" id="copyBtn">Copy review</button><button class="btn" onclick="openGoogle()" id="googleBtn">Continue to Google Reviews ↗</button></div><div class="status" id="status"></div></div>
+<p class="note" id="googleNote">Google will open in a new page. Sign in if asked, paste your review, and tap Post. This app cannot submit it on your behalf.</p></section></main>
+<section class="card admin hidden" id="adminPanel"><h3>Admin dashboard</h3><p class="sub">Local browser statistics and Google review link configuration.</p><div class="stats"><div class="stat"><strong id="generatedCount">0</strong><span>Drafts generated</span></div><div class="stat"><strong id="copiedCount">0</strong><span>Reviews copied</span></div><div class="stat"><strong id="googleCount">0</strong><span>Google link opened</span></div></div>
+<label for="reviewUrl">Google “Write a review” URL</label><input id="reviewUrl"><div class="actions"><button class="btn" onclick="saveSettings()">Save settings</button><button class="btn secondary" onclick="exportStats()">Export CSV</button><button class="btn outline" onclick="resetStats()">Reset stats</button></div>
+<h3 style="margin-top:22px">QR code for this website</h3><p class="sub">After hosting this app, paste its public HTTPS URL below to create your QR code.</p><div class="qrrow"><div><input id="siteUrl" placeholder="https://your-college-review-page.example"><div class="actions"><button class="btn secondary" onclick="makeQR()">Generate QR</button><a id="qrDownload" class="btn outline hidden" download="manas-college-review-qr.png">Download QR</a></div></div><img id="qrImage" class="qr hidden" alt="QR code for review page"></div><p class="small">Statistics are stored only in this browser. They are not a count of reviews published on Google.</p></section>
+<div class="footer">Manas College · Thank you for sharing your genuine feedback<br><button class="admin-link" onclick="toggleAdmin()">Admin access</button></div></div>
+<script>
+const DEFAULT_REVIEW_URL='https://g.page/r/Cbv2QStXe7pUEBM/review', KEY='manasReviewAppV1';let lang='en',rating=5,stats={generated:0,copied:0,opened:0},settings={reviewUrl:DEFAULT_REVIEW_URL};
+try{const s=JSON.parse(localStorage.getItem(KEY)||'{}');stats={...stats,...s.stats};settings={...settings,...s.settings};if(!settings.reviewUrl)settings.reviewUrl=DEFAULT_REVIEW_URL;}catch(e){}
+const $=id=>document.getElementById(id);
+const T={en:{headline:'Help others discover Manas College',intro:'Share what you genuinely liked about your experience. Choose a few keywords and create an editable review draft.',step:'1. Describe your experience',sub:'Select keywords or type your own. Please share only what reflects your real experience.',rating:'Your rating',keywords:'Keywords',extra:'Anything else? (optional)',generate:'Generate my review',clear:'Clear',preview:'2. Review preview',previewSub:'Edit your review freely before continuing.',empty:'Your review will appear here',emptyText:'Start by adding a few keywords.',copy:'Copy review',google:'Continue to Google Reviews ↗',honesty:'Only post a review that reflects your own genuine experience. You can edit the draft before opening Google.',note:'Google will open in a new page. Sign in if asked, paste your review, and tap Post. This app cannot submit it on your behalf.',placeholder:'e.g. supportive teachers, library, campus',extraPlaceholder:'Add a personal detail',required:'Please enter at least one keyword.'},hi:{headline:'Manas College के बारे में अपना अनुभव साझा करें',intro:'आपको अपने अनुभव में जो अच्छा लगा, उसके बारे में बताएं। कुछ कीवर्ड चुनें और अपना रिव्यू ड्राफ्ट बनाएं।',step:'1. अपना अनुभव बताएं',sub:'कीवर्ड चुनें या खुद लिखें। वही बातें साझा करें जो आपके वास्तविक अनुभव को दर्शाती हैं।',rating:'आपकी रेटिंग',keywords:'कीवर्ड',extra:'कुछ और बताना चाहेंगे? (वैकल्पिक)',generate:'मेरा रिव्यू बनाएं',clear:'साफ करें',preview:'2. रिव्यू देखें',previewSub:'Google पर जाने से पहले इसे एडिट कर सकते हैं।',empty:'आपका रिव्यू यहां दिखाई देगा',emptyText:'शुरू करने के लिए कुछ कीवर्ड लिखें।',copy:'रिव्यू कॉपी करें',google:'Google Reviews पर जाएं ↗',honesty:'केवल वही रिव्यू पोस्ट करें जो आपके अपने वास्तविक अनुभव पर आधारित हो।',note:'Google नए पेज में खुलेगा। रिव्यू पेस्ट करें और Post दबाएं। यह ऐप आपकी जगह रिव्यू पोस्ट नहीं कर सकता।',placeholder:'जैसे: अच्छे शिक्षक, लाइब्रेरी, कैंपस',extraPlaceholder:'अपनी कोई खास बात लिखें',required:'कृपया कम से कम एक कीवर्ड लिखें।'}};
+function setLang(v){lang=v;$('enBtn').classList.toggle('active',v==='en');$('hiBtn').classList.toggle('active',v==='hi');let t=T[v];for(let [id,key] of [['headline','headline'],['intro','intro'],['stepTitle','step'],['stepSub','sub'],['ratingLabel','rating'],['keywordLabel','keywords'],['extraLabel','extra'],['generateBtn','generate'],['clearBtn','clear'],['previewTitle','preview'],['previewSub','previewSub'],['emptyTitle','empty'],['emptyText','emptyText'],['copyBtn','copy'],['googleBtn','google'],['honesty','honesty'],['googleNote','note']])$(id).textContent=t[key];$('keywords').placeholder=t.placeholder;$('extra').placeholder=t.extraPlaceholder;}
+function setRating(v){rating=v;document.querySelectorAll('.star').forEach(s=>s.classList.toggle('on',+s.dataset.v<=v));}
+function addWord(w){let el=$('keywords'),a=el.value.split(',').map(x=>x.trim()).filter(Boolean);if(!a.some(x=>x.toLowerCase()===w.toLowerCase()))a.push(w);el.value=a.join(', ');}
+function persist(){localStorage.setItem(KEY,JSON.stringify({stats,settings}));renderStats();}
+let lastReviewTemplate=-1;
+function pickTemplate(list){let n=Math.floor(Math.random()*list.length);if(list.length>1&&n===lastReviewTemplate)n=(n+1+Math.floor(Math.random()*(list.length-1)))%list.length;lastReviewTemplate=n;return list[n];}
+function generateReview(){
+ let kw=$('keywords').value.split(',').map(x=>x.trim()).filter(Boolean);
+ if(!kw.length){$('keywords').focus();$('status').textContent=T[lang].required;return;}
+ let extra=$('extra').value.trim(), details=kw.join(', '), review='';
+ const enPositive=[
+  `My experience with Manas College has been ${rating>=4?'really positive':rating===3?'good':'mixed'}. I especially appreciated ${details}.${extra?' '+extra:''} It was nice to have this experience at the college.`,
+  `I had a ${rating>=4?'great':rating===3?'pleasant':'mixed'} experience at Manas College. The things that stood out to me were ${details}.${extra?' '+extra:''} Thank you to the college team.`,
+  `What I liked about Manas College was ${details}.${extra?' '+extra:''} Overall, my experience has been ${rating>=4?'very good':rating===3?'satisfactory':'mixed'}, and I am glad to share my feedback.`,
+  `Manas College gave me an experience worth sharing. I particularly noticed ${details}.${extra?' '+extra:''} I appreciate the efforts made by the college.`,
+  `A few things I appreciated at Manas College: ${details}.${extra?' '+extra:''} My overall experience has been ${rating>=4?'excellent':rating===3?'decent':'mixed'}.`
+ ];
+ const enNeutral=[
+  `My experience at Manas College has been balanced. I noticed ${details}.${extra?' '+extra:''} I hope the college continues improving and supporting its students.`,
+  `I would describe my experience with Manas College as ${rating===3?'fair':'mixed'}. Some points worth mentioning are ${details}.${extra?' '+extra:''} Sharing this feedback may help others understand the college.`
+ ];
+ const hiPositive=[
+  `Manas College में मेरा अनुभव ${rating>=4?'काफी अच्छा':'अच्छा'} रहा। मुझे खास तौर पर ${details} अच्छी लगीं।${extra?' '+extra:''} अपना अनुभव साझा करके अच्छा लगा।`,
+  `Manas College के बारे में मेरी राय ${rating>=4?'सकारात्मक':'अच्छी'} है। यहां ${details} जैसी बातें मुझे पसंद आईं।${extra?' '+extra:''} कॉलेज को धन्यवाद।`,
+  `मुझे Manas College में ${details} का अनुभव अच्छा लगा।${extra?' '+extra:''} कुल मिलाकर मेरा अनुभव ${rating>=4?'बहुत अच्छा':'अच्छा'} रहा और मैं अपना फीडबैक साझा करना चाहता/चाहती हूं।`,
+  `Manas College में कुछ ऐसी बातें रहीं जो मुझे पसंद आईं—${details}।${extra?' '+extra:''} मेरा अनुभव अच्छा रहा।`
+ ];
+ const hiNeutral=[
+  `Manas College में मेरा अनुभव मिला-जुला रहा। मैंने ${details} पर ध्यान दिया।${extra?' '+extra:''} उम्मीद है कि कॉलेज आगे भी सुधार करता रहेगा।`,
+  `Manas College के साथ मेरा अनुभव सामान्य रहा। ${details} मेरे अनुभव का हिस्सा रहे।${extra?' '+extra:''} यह मेरा व्यक्तिगत फीडबैक है।`
+ ];
+ let pool=lang==='en'?(rating>=4?enPositive:enNeutral):(rating>=4?hiPositive:hiNeutral);
+ review=pickTemplate(pool);
+ $('reviewText').value=review;
+ $('empty').classList.add('hidden');$('editorWrap').classList.remove('hidden');
+ $('status').textContent=lang==='hi'?'एक नया रिव्यू ड्राफ्ट तैयार है। पोस्ट करने से पहले इसे जांच लें।':'A fresh review draft is ready. Please check it before posting.';
+ stats.generated++;persist();
+}
+function clearForm(){$('keywords').value='';$('extra').value='';$('reviewText').value='';$('editorWrap').classList.add('hidden');$('empty').classList.remove('hidden');$('status').textContent='';setRating(5);}
+async function copyReview(){try{await navigator.clipboard.writeText($('reviewText').value);}catch(e){$('reviewText').select();document.execCommand('copy');}stats.copied++;persist();$('status').textContent=lang==='hi'?'रिव्यू कॉपी हो गया।':'Review copied. Paste it into Google Reviews.';}
+function openGoogle(){
+ if(!settings.reviewUrl){$('status').textContent='Google review link is not configured.';return;}
+ // Open Google synchronously during the button click so popup blockers do not stop it.
+ const reviewTab=window.open(settings.reviewUrl,'_blank');
+ if(!reviewTab){window.location.href=settings.reviewUrl;return;}
+ stats.opened++;persist();
+ const review=$('reviewText').value;
+ let copyTask=null;
+ try{if(navigator.clipboard&&navigator.clipboard.writeText)copyTask=navigator.clipboard.writeText(review);}catch(e){}
+ if(copyTask&&typeof copyTask.then==='function'){
+  copyTask.then(()=>{$('status').textContent=lang==='hi'?'Google Review खुल गया है और आपका ड्राफ्ट कॉपी हो गया है। Google पर Paste करके खुद Post करें।':'Google Review opened. Your draft was copied; paste it into Google and submit it yourself.';})
+  .catch(()=>{$('status').textContent=lang==='hi'?'Google Review खुल गया है। अपना रिव्यू कॉपी करके वहां Paste करें।':'Google Review opened. Copy your draft and paste it there before submitting.';});
+ }else{
+  $('reviewText').focus();$('reviewText').select();
+  try{document.execCommand('copy');}catch(ignore){}
+  $('status').textContent=lang==='hi'?'Google Review खुल गया है। जरूरत हो तो ड्राफ्ट Paste करें।':'Google Review opened. Paste your draft there before submitting.';
+ }
+}
+function toggleAdmin(force){let p=$('adminPanel');if(force===true)p.classList.remove('hidden');else p.classList.toggle('hidden');$('reviewUrl').value=settings.reviewUrl;renderStats();}
+function renderStats(){$('generatedCount').textContent=stats.generated;$('copiedCount').textContent=stats.copied;$('googleCount').textContent=stats.opened;}
+function saveSettings(){let u=$('reviewUrl').value.trim();if(!/^https:\/\/(g\.page\/r\/|www\.google\.com\/maps\/|search\.google\.com\/local\/writereview)/i.test(u)){alert('Please enter the direct Google review link beginning with https://');return;}settings.reviewUrl=u;persist();alert('Google review link saved on this browser.');}
+function exportStats(){let rows=[['Metric','Count'],['Drafts generated',stats.generated],['Reviews copied',stats.copied],['Google link opened',stats.opened]],csv=rows.map(r=>r.join(',')).join('\\n'),a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));a.download='manas-review-stats.csv';a.click();URL.revokeObjectURL(a.href);}
+function resetStats(){if(confirm('Reset all local statistics?')){stats={generated:0,copied:0,opened:0};persist();}}
+function makeQR(){let u=$('siteUrl').value.trim();if(!/^https:\/\/.+/i.test(u)){alert('Enter the full public HTTPS website URL.');return;}let q='https://api.qrserver.com/v1/create-qr-code/?size=500x500&data='+encodeURIComponent(u);$('qrImage').src=q;$('qrImage').classList.remove('hidden');$('qrDownload').href=q;$('qrDownload').classList.remove('hidden');}
+renderStats();
+</script></body></html>
